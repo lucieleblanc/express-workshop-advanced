@@ -37,6 +37,6 @@ module.exports = {
   },
 
   createUser: function(name, age, salary) {
-    data[name] = { age: age, salary: salary};
+    data[name] = { name: name, age: age, salary: salary};
   }
 };

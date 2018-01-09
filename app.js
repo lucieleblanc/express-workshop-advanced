@@ -1,12 +1,22 @@
 var express = require('express');
 var app = express();
 var chalk = require('chalk');
-// var routes = require('./routes'); uncomment this when you are ready to connect your router
+var volleyball =require('volleyball');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(volleyball);
+
+var routes = require('./routes');
+app.use('/api', routes);
 
 app.get('/', function (req, res, next) {
   res.send('Root Route');
 });
 
+app.get('/*', function(err, req, res, next) {
+	res.status(404);
+})
 
 var PORT = 8000;
 
