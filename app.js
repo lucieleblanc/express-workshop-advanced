@@ -14,9 +14,11 @@ app.get('/', function (req, res, next) {
   res.send('Root Route');
 });
 
-app.get('/*', function(err, req, res, next) {
-	res.status(404);
-})
+app.use(function(err, req, res, next) {
+	console.log("You got an error! " + err.message);
+	// console.error(chalk.red(err.stack));
+	res.status(500).send(err.message);
+});
 
 var PORT = 8000;
 

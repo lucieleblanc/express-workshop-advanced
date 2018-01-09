@@ -17,7 +17,7 @@ router.get('/:name', function(req, res) {
 router.post('/', function(req, res, next) {
 	var input = req.body;
 	if (userStorage.getUserByName(input.name)) {
-		var err = new Error(chalk.red('User already exists'));
+		var err = new Error('User already exists');
 		next(err);
 	} else {
 		userStorage.createUser(input.name, input.age, input.salary);
